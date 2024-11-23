@@ -27,9 +27,9 @@ M.check = function()
         return
     end
 
-    -- Require fx 8.x.x
-    if v.major ~= 8 then
-        vim.health.error("fx must be 8.x.x, but got " .. tostring(v))
+    -- Require fx 30.x.x
+    if v.major >= 30 then
+        vim.health.error("fx must be minimum 30.x.x, but got " .. tostring(v))
         return
     end
 
