@@ -43,7 +43,7 @@ function M.show(opts)
 end
 
 function M.setup(opts)
-	vim.api.nvim_create_user_command("fx", function()
+	vim.api.nvim_create_user_command("Fx", function()
 		M.show(opts)
 	end, {
 		desc = "Show the fx representation of this",
