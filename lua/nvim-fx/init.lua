@@ -27,7 +27,7 @@ function M.show(opts)
 	vim.api.nvim_set_current_win(win)
 
 	-- Launch top, and configure to close the window when the process exits
-	vim.fn.termopen({ "top" }, {
+	vim.fn.termopen({ "fx", vim.fn.expand("%:p") }, {
 		on_exit = function(_, _, _)
 			if vim.api.nvim_win_is_valid(win) then
 				vim.api.nvim_win_close(win, true)
