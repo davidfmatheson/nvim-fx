@@ -5,6 +5,9 @@ local M = {}
 function M.show(opts)
 	opts = opts or {}
 
+  -- Grab the filename before we create a new buffer
+  local file = vim.api.nvim_buf_get_name(0)
+
 	-- Create an immutable scratch buffer that is wiped once hidden
 	local buf = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
@@ -22,7 +25,6 @@ function M.show(opts)
 		col = math.ceil((vim.o.columns - width) / 2),
 		border = "single",
 	})
-  local file = vim.fn.expand("%:p")
 
 	-- Change to the window that is floating to ensure termopen uses correct size
 	vim.api.nvim_set_current_win(win)
