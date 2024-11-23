@@ -21,14 +21,7 @@ M.check = function()
         return
     end
 
-    -- Attempt to parse fx's version string to get the
-    -- semantic version string, which comes after the word
-    -- fx and before the parentheses. (e.g. "fx 8.6.0 (...)")
-    --
-    -- NOTE: While `vim.version.parse` should return nil on invalid input,
-    --       having something really invalid like "abc" will cause it to
-    --       throw an error on neovim 0.10.0! Make sure you're using 0.10.2!
-    local v = vim.version.parse(vim.split(results.stdout or "", " ")[2])
+    local v = vim.version.parse(results.stdout or "")
     if not v then
         vim.health.error("invalid fx version output", results.stdout)
         return
