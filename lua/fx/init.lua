@@ -39,4 +39,12 @@ function M.show(opts)
 	vim.cmd.startinsert()
 end
 
+function M.setup()
+	vim.api.nvim_create_user_command("Top", function()
+		require("fx").show()
+	end, {
+		desc = "Show the top window",
+	})
+end
+
 return M
