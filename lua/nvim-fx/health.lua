@@ -28,7 +28,7 @@ M.check = function()
     end
 
     -- Require fx 30.x.x
-    if v.major >= 30 then
+    if tonumber(v.major) >= 30 then
         vim.health.error("fx must be minimum 30.x.x, but got " .. tostring(v))
         return
     end
