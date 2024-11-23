@@ -1,6 +1,6 @@
 local M = {}
 
----Open a floating window used to display top.
+---Open a floating window used to display the current buffer json with fx.
 ---@param opts? {win?:integer}
 function M.show(opts)
 	opts = opts or {}
@@ -29,7 +29,7 @@ function M.show(opts)
 	-- Change to the window that is floating to ensure termopen uses correct size
 	vim.api.nvim_set_current_win(win)
 
-	-- Launch top, and configure to close the window when the process exits
+	-- Launch fx with the file in the buffer, and configure to close the window when the process exits
 	vim.fn.termopen({ "fx", file }, {
 		on_exit = function(_, _, _)
 			if vim.api.nvim_win_is_valid(win) then
@@ -43,7 +43,7 @@ function M.show(opts)
 end
 
 function M.setup(opts)
-	vim.api.nvim_create_user_command("Top", function()
+	vim.api.nvim_create_user_command("fx", function()
 		M.show(opts)
 	end, {
 		desc = "Show the fx representation of this",
